@@ -15,7 +15,7 @@ class Ui_Form(object):
         Form.setFixedSize(1061, 754)
         Form.setAutoFillBackground(False)
         self.groupBox_account = QtWidgets.QGroupBox(Form)
-        self.groupBox_account.setGeometry(QtCore.QRect(20, 20, 361, 101))
+        self.groupBox_account.setGeometry(QtCore.QRect(20, 20, 351, 101))
         self.groupBox_account.setObjectName("groupBox_account")
         self.label_Id = QtWidgets.QLabel(self.groupBox_account)
         self.label_Id.setGeometry(QtCore.QRect(20, 20, 58, 31))
@@ -81,6 +81,9 @@ class Ui_Form(object):
         self.tableView_StocksList.setGeometry(QtCore.QRect(0, 0, 1021, 391))
         self.tableView_StocksList.setObjectName("tableView_StocksList")
         self.tabWidget.addTab(self.tab, "")
+        self.pushButton_LoadStocks = QtWidgets.QPushButton(Form)
+        self.pushButton_LoadStocks.setGeometry(QtCore.QRect(400, 30, 93, 28))
+        self.pushButton_LoadStocks.setObjectName("pushButton_LoadStocks")
 
         self.retranslateUi(Form)
         self.tabWidget.setCurrentIndex(3)
@@ -101,4 +104,5 @@ class Ui_Form(object):
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("Form", "期貨"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_5), _translate("Form", "海期"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), _translate("Form", "商品選單"))
+        self.pushButton_LoadStocks.setText(_translate("Form", "讀取商品"))
 

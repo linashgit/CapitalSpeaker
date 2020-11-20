@@ -8,16 +8,16 @@ path = os.getcwd()
 comtypes.client.GetModule(path + '\\SKCOM.dll')
 
 class CaptialModel:
-    def __init__(self, user, passwd):
+    def __init__(self, user, passwd, skQ_events, skR_events):
         # 建立物件
         self.skC = comtypes.client.CreateObject(sk.SKCenterLib, interface=sk.ISKCenterLib)
         self.skQ = comtypes.client.CreateObject(sk.SKQuoteLib, interface=sk.ISKQuoteLib)
         self.skR = comtypes.client.CreateObject(sk.SKReplyLib, interface=sk.ISKReplyLib)
 
         # 事件class 連結
-        self.EventQ = skQ_events()
+        self.EventQ = skQ_events
         self.ConnectionQ = comtypes.client.GetEvents(self.skQ, self.EventQ)
-        self.EventR = skR_events()
+        self.EventR = skR_events
         self.ConnectionO = comtypes.client.GetEvents(self.skR, self.EventR)
 
         # 初始狀態
@@ -37,6 +37,11 @@ class CaptialModel:
 
     def signOut(self):
         code = self.skC.SKCenterLib_GetReturnCodeMessage(self.skQ.SKQuoteLib_LeaveMonitor())
+        return code
+
+    def requestTicks(self, num1, num2):
+        # api註冊新商品
+        code = self.skQ.SKQuoteLib_RequestTicks(num1, num2)
         return code
 
     def requestStockList(self):
@@ -60,7 +65,7 @@ class CaptialModel:
 
         return data
 
-
+'''
 # skQ事件class
 class skQ_events:
     def __init__(self):
@@ -82,7 +87,7 @@ class skQ_events:
 
     def OnNotifyTicks(self, sMarketNo, sIndex, nPtr, nDate, nTimehms, nTimemillismicros, nBid, nAsk, nClose, nQty,
                       nSimulate):
-        pass
+        print(sIndex, nTimehms, nClose, nQty)
 
     def OnNotifyServerTime(self, sHour, sMinute, sSecond, nTotal):
         pass
@@ -115,3 +120,4 @@ if __name__ == '__main__':
 
     # cap.signOut()
 
+'''

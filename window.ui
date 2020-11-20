@@ -24,7 +24,7 @@
     <rect>
      <x>20</x>
      <y>20</y>
-     <width>361</width>
+     <width>351</width>
      <height>101</height>
     </rect>
    </property>
@@ -184,7 +184,7 @@
    <property name="currentIndex">
     <number>3</number>
    </property>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="widget">
     <attribute name="title">
      <string>股票</string>
     </attribute>
@@ -244,6 +244,19 @@
      </property>
     </widget>
    </widget>
+  </widget>
+  <widget class="QPushButton" name="pushButton_LoadStocks">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>30</y>
+     <width>93</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>讀取商品</string>
+   </property>
   </widget>
  </widget>
  <resources/>

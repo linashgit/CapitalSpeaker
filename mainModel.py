@@ -4,7 +4,6 @@ from PyQt5.QtGui import QStandardItemModel, QStandardItem
 from CapitalClass import *
 from MsgControl import *
 from LoadFinancialData import *
-from
 
 class MainFrame(QFrame, Ui_Form):
     def __init__(self, parent=None):
@@ -25,13 +24,13 @@ class MainFrame(QFrame, Ui_Form):
         global GlobalStocks, GlobalFutures
         GlobalStocks = QStandardItemModel(0, 0)
         GlobalFutures = QStandardItemModel(0, 0)
-
+        
         # 事件
         self.pushButton_Login.clicked.connect(self.login) #登入
         self.pushButton_Monitor.clicked.connect(self.enterMonitor) #監控
         self.pushButton_Signout.clicked.connect(self.signOut) #登出
         #self.pushButton_LoadStocks.clicked.connect(self.requestTicks) #獲得報價
-        self.pushButton_LoadStocks.clicked.connect(self.graphStockData) #測試
+        self.pushButton_LoadStocks.clicked.connect(self.readStockData) #測試
 
         # 表格
         ## 商品報價
@@ -81,6 +80,10 @@ class MainFrame(QFrame, Ui_Form):
 
     def graphStockData(self):
         pass
+    
+    def readStockData(self):
+        model = pandasModel(self.df)
+        self.tableView_Stocks.setModel(model)
 
 # skQ事件class
 class skQ_events:
